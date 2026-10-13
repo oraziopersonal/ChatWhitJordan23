@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-app = FastAPI(title="ChatWithJames API")
+app = FastAPI(title="ChatWithJames API", version="1.0.0")
 
 
 @app.get("/")
@@ -8,7 +8,7 @@ async def read_root() -> dict[str, str]:
     return {"message": "Hello, World!"}
 
 
-@app.get("/health")
+@app.get("/square/{number}")
 async def health_check() -> dict[str, str]:
     return {"status": "ok"}
 
