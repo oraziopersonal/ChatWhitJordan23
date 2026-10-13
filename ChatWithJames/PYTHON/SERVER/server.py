@@ -1,21 +1,19 @@
-from socket import socket
+from fastapi import FastAPI
+
+app = FastAPI(title="ChatWithJames API")
 
 
-def main():
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(('localhost', 8080))
-    server_socket.listen(1)
+@app.get("/")
+async def read_root() -> dict[str, str]:
+    return {"message": "Hello, World!"}
 
-    while True:
-        client_socket, address = server_socket.accept()
-        print(f"Connection from {address}")
 
-        data = client_socket.recv(1024)
-        print(f"Received: {data.decode()}")
+@app.get("/health")
+async def health_check() -> dict[str, str]:
+    return {"status": "ok"}
 
-        response = "HTTP/1.1 200 OK\r\n\r\nHello, World!"
-        client_socket.send(response.encode())
-        client_socket.close()
 
 if __name__ == "__main__":
-    main()
+    import uvicorn
+
+    uvicorn.run("server:app", host="127.0.0.1", port=8000, reload=True)
