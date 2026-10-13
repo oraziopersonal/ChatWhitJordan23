@@ -10,7 +10,7 @@ response = client.chat.completions.create(
     messages=[
         {
             "role": "user",
-            "content": "Ciao, chi sei?"
+            "content": "You is expert professional to Michael Jordan?"
         }
     ]
 )
