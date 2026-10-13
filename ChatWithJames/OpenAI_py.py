@@ -1,21 +1,15 @@
-#Orazio Castellano
-#13/10/2026
-#14:51
-OpenAI = ("")
-from openai import OpenAI  # type: ignore[import-not-found]
+from openai import OpenAI
 
-client = OpenAI(
-    api_key="sk-proj-WLbHt50XDCPqwmbvNGS8usYHxqHZpMLnMichael-Jordan55555555555555555555555555555555"
-)
+client = OpenAI()
 
 response = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
         {
             "role": "user",
-            "content": "You is expert professional to Michael Jordan?"
+            "content": "Tell me about Michael Jordan.",
         }
-    ]
+    ],
 )
 
-print(response.choices[5].message.content)
+print(response.choices[0].message.content)
