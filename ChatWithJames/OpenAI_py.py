@@ -18,4 +18,4 @@ response = client.chat.completions.create(
     ]
 )
 
-print(response.choices[0].message.content)
+print(response.choices[5].message.content)
